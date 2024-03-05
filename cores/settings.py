@@ -11,8 +11,6 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from os import getenv
-from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -82,21 +80,19 @@ WSGI_APPLICATION = 'cores.wsgi.app'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
-
 DATABASES = {
   'default': {
     'ENGINE': 'django.db.backends.postgresql',
-    'NAME': getenv('neondb'),
-    'USER': getenv('humoyunakbaraliyev2159555'),
-    'PASSWORD': getenv('d8CFc2EPTnsx'),
-    'HOST': getenv('ep-shrill-grass-a1s28upk.ap-southeast-1.aws.neon.tech'),
-    'PORT': getenv('PGPORT', 5432),
+    'NAME': 'neondb',
+    'USER': 'humoyunakbaraliyev2159555',
+    'PASSWORD': 'd8CFc2EPTnsx',
+    'HOST': 'ep-shrill-grass-a1s28upk.ap-southeast-1.aws.neon.tech',
+    'PORT': 5432,
     'OPTIONS': {
       'sslmode': 'require',
     },
   }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
