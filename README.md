@@ -3,16 +3,15 @@
 > Этот проэкт для опубликования новостей, здесь читателям можно написать комментарии к новостям и читать новости 10 ти дневные и месяцные трендовые новости. Если они регистрацию проходять то к ним при каждой опубликовании новой новости приходить уведомление об новой новости и линк к этому новостю. И еще при регистрации к ним тоже приходить уведомление об приятного прихода. Сейчас программа `vercale` сервере есть через этот линк вы можете посмотерь - [news-app](https://news-app-lac-mu.vercel.app/).
 
 ![img1](media/project_images/img1.jpg)
-![img1](media/project_images/img2.jpg)
-![img1](media/project_images/img3.jpg)
-![img1](media/project_images/img4.jpg)
-![img1](media/project_images/img5.jpg)
-![img1](media/project_images/img6.jpg)
-![img1](media/project_images/img7.jpg)
-![img1](media/project_images/img8.jpg)
-![img1](media/project_images/img9.jpg)
-![img1](media/project_images/img10.jpg)
-![img1](media/project_images/img11.jpg)
+![img2](media/project_images/img2.jpg)
+![img3](media/project_images/img3.jpg)
+![img4](media/project_images/img4.jpg)
+![img5](media/project_images/img5.jpg)
+![img6](media/project_images/img6.jpg)
+![img7](media/project_images/img7.jpg)
+![img8](media/project_images/img8.jpg)
+![img9](media/project_images/img9.jpg)
+![img10](media/project_images/img10.jpg)
 **Пример программы так работает.**
 
 
