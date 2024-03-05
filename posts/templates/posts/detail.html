@@ -12,7 +12,7 @@
                 <h5 class="detail_title mb-4"> {{ content.title }}</h5>
             </div>
             <div class="img_container">
-                <img class="card-img" src="{{ content.image.url }}" alt="Card image cap">
+                <img class="card-img" src="{{ content.image }}" alt="Card image cap">
             </div>
             <div class="detail_body">
                 <p class="card_text">{{ content.content }}</p>
@@ -27,7 +27,7 @@
                 <div class="comments comment_back ">
                 <hr>
                     <div class="profile-user d-flex align-items-center">
-                        <img class="avatar-user rounded-circle m-1" src="{{ comment.user.profile.profile_image.url  }}" alt="Profile Image">
+                        <img class="avatar-user rounded-circle m-1" src="{{ comment.user.profile.profile_image  }}" alt="Profile Image">
                         <div class="user-details ml-5">
                             <p class="p-username mb-0 font-weight-bold ">{{ comment.user.username }}</p>
                             <p class="p-question-date mb-0 text-muted"><i class="fa-duotone fa-calendar-days"></i> {{ comment.timestamp|date:"H:i/ F j, Y"  }}</p>
@@ -48,7 +48,7 @@
                     <div class="comments comment_back ">
                     <hr>
                         <div class="profile-user d-flex align-items-center">
-                            <img class="avatar-user rounded-circle m-1" src="{{ comment.user.profile.profile_image.url  }}" alt="Profile Image">
+                            <img class="avatar-user rounded-circle m-1" src="{{ comment.user.profile.profile_image  }}" alt="Profile Image">
                             <div class="user-details ml-5">
                                 <p class="p-username mb-0 font-weight-bold ">{{ comment.user.username }}</p>
                                 <p class="p-question-date mb-0 text-muted"><i class="fa-duotone fa-calendar-days"></i> {{ comment.timestamp|date:"H:i/ F j, Y"  }}</p>

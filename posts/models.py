@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 class News(models.Model):
     user = models.ForeignKey(User, models.CASCADE)
-    image = models.ImageField(upload_to='media')
+    image = models.URLField()
     title = models.CharField(max_length=128)
     content = models.TextField()
     post_date = models.DateTimeField(auto_now_add=True)
