@@ -1,0 +1,28 @@
+{% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+{% block heading %}
+    <title>Login Page!</title>
+{% endblock %}
+
+{% block content %}
+      <div class="content-section">
+        <form method="post" action="{% url 'Login' %}">
+            {% csrf_token %}
+            <div class="mb-3 mx-auto card_form">
+                <div class="p-3">
+                    {{ form|crispy }}
+                </div>
+                <div class="form-group d-flex justify-content-center ">
+                    <button class="btn btn-outline-primary " type="submit">Submit</button>
+                </div>
+                <div class="pt-3 d-flex flex-column align-items-center justify-content-center pb-3">
+                    <small class="text-muted">
+                        Need An Account? <a class="ml-2 form_regist" href="{% url 'singUp' %}">Sign Up Now</a>
+                    </small>
+                    <small class="text-muted"><a class="ml-2 form_regist" href="{% url 'password_reset' %}">Forgot Your Password?</a></small>
+                </div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

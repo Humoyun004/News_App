@@ -1,0 +1,31 @@
+{% extends 'posts/base.html' %}
+
+{% block header %}
+    <title>Home Page!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="container_">
+        <div class="headline">
+            <h4 class="headline_title">All Trending Headlines for the last 10 Days</h4>
+        </div>
+        <hr>
+        <div class="row">
+            {% for article in trend_10 %}
+                <div class="col-sm-6 col-md-4 col-lg-4">
+                    <div class="card_container d-flex ">
+                        <div class="image_container">
+                            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="img-fluid">
+                        </div>
+                        <div class="text_container">
+                            <p class="post_date"><i class="fa-duotone fa-calendar-days"></i> {{ article.post_date|date:"H:i/ F j, Y"  }}</p>
+                            <div class="scroll-container">
+                                <a href="{% url 'DetailNews' pk=article.pk %}" class="post_title"><p>{{ article.title }}</p></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,67 @@
+{% extends 'posts/base.html' %}
+
+{% block title %}
+    <title>Detail Page of News!</title>
+{% endblock %}
+
+{% block content %}
+     <div class="container_">
+        <div class="detail_card">
+            <p class="post_date"><i class="fa-duotone fa-calendar-days"></i> {{ content.post_date|date:"H:i/ F j, Y"  }}   <i class="fa-duotone fa-eye views"></i> {{ content.viewers }}</p>
+            <div class="img_container">
+                <h5 class="detail_title mb-4"> {{ content.title }}</h5>
+            </div>
+            <div class="img_container">
+                <img class="card-img" src="{{ content.image.url }}" alt="Card image cap">
+            </div>
+            <div class="detail_body">
+                <p class="card_text">{{ content.content }}</p>
+            </div>
+        </div>
+        {% if user.is_authenticated %}
+            <div class="commend_container">
+                <hr>
+                <a href="{% url 'comment_add' pk=content.pk %}" class="card-reply-a btn btn-sm btn-outline-primary mr-2 d-flex justify-content-center"> Comment</a>
+                <hr>
+                {% for comment in comments %}
+                <div class="comments comment_back ">
+                <hr>
+                    <div class="profile-user d-flex align-items-center">
+                        <img class="avatar-user rounded-circle m-1" src="{{ comment.user.profile.profile_image.url  }}" alt="Profile Image">
+                        <div class="user-details ml-5">
+                            <p class="p-username mb-0 font-weight-bold ">{{ comment.user.username }}</p>
+                            <p class="p-question-date mb-0 text-muted"><i class="fa-duotone fa-calendar-days"></i> {{ comment.timestamp|date:"H:i/ F j, Y"  }}</p>
+                        </div>
+                    </div>
+                    <div class="card-question comment_back p-3">
+                        <div class="card-extra">
+                            <p class="tweet-comment-text"><i class="fa-solid fa-reply fa-rotate-180"></i> {{ comment.comment }}</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+            </div>
+        {% else %}
+            <div class="commend_container">
+                {% for comment in comments %}
+                    <div class="comments comment_back ">
+                    <hr>
+                        <div class="profile-user d-flex align-items-center">
+                            <img class="avatar-user rounded-circle m-1" src="{{ comment.user.profile.profile_image.url  }}" alt="Profile Image">
+                            <div class="user-details ml-5">
+                                <p class="p-username mb-0 font-weight-bold ">{{ comment.user.username }}</p>
+                                <p class="p-question-date mb-0 text-muted"><i class="fa-duotone fa-calendar-days"></i> {{ comment.timestamp|date:"H:i/ F j, Y"  }}</p>
+                            </div>
+                        </div>
+                        <div class="card-question comment_back p-3">
+                            <div class="card-extra">
+                                <p class="tweet-comment-text"><i class="fa-solid fa-reply fa-rotate-180"></i> {{ comment.comment }}</p>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

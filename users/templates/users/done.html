@@ -1,0 +1,20 @@
+{% extends 'posts/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block header %}
+    <title>Reset Password Done</title>
+{% endblock %}
+
+{% block content %}
+    <div class="mb-3 mx-auto card_form">
+            <div class="p-3 pb-3">
+{#                <h1 class="d-flex justify-content-center text-primary">Reset Password Done</h1>#}
+                <h2 class=" text-secondary text-center">Password sent! <i class="fa-duotone fa-badge-check text-primary"></i> <br> Check your Email! </h2>
+                <div class="d-flex px-10 justify-content-evenly mails">
+                    <h4  class="font-size-15 text-center"><i class="fa-duotone fa-envelope text-danger"></i> <a href="https://mail.google.com/mail/" class="text-decoration-none">Google</a></h4>
+                    <h4  class="font-size-15 text-center"><i class="fa-duotone fa-envelopes text-danger"></i> <a href="https://login.yahoo.com/" class="text-decoration-none">Yahoo</a></h4>
+                    <h4  class="font-size-15 text-center"><i class="fa-duotone fa-envelope-dot text-danger"></i> <a href="https://360.yandex.com/mail/" class="text-decoration-none">Yandex</a></h4>
+                </div>
+            </div>
+    </div>
+{% endblock %}

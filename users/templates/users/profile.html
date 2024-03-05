@@ -1,0 +1,25 @@
+{% extends 'posts/base.html' %}
+
+{% block heading %}
+    <title>Profile Info Page!</title>
+{% endblock %}
+
+{% block content %}
+    <div class="content-section">
+        {% csrf_token %}
+        <div class="mb-3 mx-auto card_form">
+            <div class="p-3">
+                <div class="profile-user d-flex justify-content-center">
+                    <img class="avatar-user rounded-circle " src="{{ user.profile.profile_image.url  }}" alt="Profile Image">
+                </div>
+                <p class="username-p"><span class="info_p"><i class="fa-duotone fa-user"></i> :</span> {{ user.username }}</p>
+                <p class="username-p"><span class="info_p"><i class="fa-duotone fa-envelope"></i> :</span> {{ user.email }}</p>
+                {% if user.first_name and user.last_name %}
+                    <p class="username-p"><span class="info_p"><i class="fa-solid fa-signature left_p"></i>First name:</span> {{ user.first_name }}</p>
+                    <p class="username-p"><span class="info_p"><i class="fa-solid fa-signature left_p"></i>Last name:</span> {{ user.last_name }}</p>
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'posts/base.html'%}
+{% load crispy_forms_tags %}
+
+{% block header %}
+    <title>Reset Password</title>
+{% endblock %}
+
+{% block content %}
+    <h1>Reset Password</h1>
+    <form method="POST" class="post_form">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-outline-success">Reset Password</button>
+    </form>
+{% endblock %}
+
