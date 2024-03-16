@@ -11,7 +11,6 @@
 ![img7](media/project_images/img7.jpg)
 ![img8](media/project_images/img8.jpg)
 ![img9](media/project_images/img9.jpg)
-![img10](media/project_images/img10.jpg)
 **Пример программы так работает.**
 
 
