@@ -7,7 +7,7 @@ class News(models.Model):
     image = models.URLField()
     title = models.CharField(max_length=128)
     content = models.TextField()
-    post_date = models.DateTimeField(auto_now_add=True)
+    post_date = models.DateTimeField(null=True, blank=True)
     viewers = models.IntegerField(default=0)
 
     class Meta:
@@ -23,7 +23,7 @@ class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     news = models.ForeignKey(News, on_delete=models.CASCADE)
     comment = models.TextField()
-    timestamp = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(null=True, blank=True)
 
     def __str__(self):
         if len(self.comment) > 40:
