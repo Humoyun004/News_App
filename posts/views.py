@@ -3,6 +3,9 @@ from django.db.models import Q
 from django.shortcuts import render, get_object_or_404, redirect
 from datetime import datetime, timedelta
 from django.views.generic import DetailView
+from datetime import datetime, timedelta
+from django.core.cache import cache
+from django.shortcuts import render
 
 from .models import News, Comment
 from .forms import CommentForm
@@ -16,23 +19,57 @@ def view_news(request, news_id):
 
 
 def home(request):
-    trend_10 = News.objects.filter(post_date__gte=datetime.now().date() - timedelta(days=10)).order_by('-viewers')[:6]
-    end_date_month = datetime.now().date()
-    start_date_month = end_date_month - timedelta(days=30)
-    trend_month = News.objects.filter(post_date__gte=start_date_month, post_date__lte=end_date_month).order_by('-viewers')[:6]
+    trend_10_cache_key = "home_trend_10"
+    trend_month_cache_key = "home_trend_month"
+    
+
+    trend_10 = cache.get(trend_10_cache_key)
+    if not trend_10:
+        trend_10 = News.objects.filter(
+            post_date__gte=datetime.now().date() - timedelta(days=10)
+        ).order_by('-viewers')[:6]
+        cache.set(trend_10_cache_key, trend_10, timeout=3600)  
+
+    
+    trend_month = cache.get(trend_month_cache_key)
+    if not trend_month:
+        end_date_month = datetime.now().date()
+        start_date_month = end_date_month - timedelta(days=30)
+        trend_month = News.objects.filter(
+            post_date__gte=start_date_month, post_date__lte=end_date_month
+        ).order_by('-viewers')[:6]
+        cache.set(trend_month_cache_key, trend_month, timeout=3600)  
+
     return render(request, 'posts/index.html', context={'trend_10': trend_10, 'trend_month': trend_month})
 
 
 def all_trend_10(request):
-    trend_10 = News.objects.filter(post_date__gte=datetime.now().date() - timedelta(days=10)).order_by('-viewers')
+    trend_10_cache_key = "all_trend_10"
+    
+    trend_10 = cache.get(trend_10_cache_key)
+    if not trend_10:
+        trend_10 = News.objects.filter(
+            post_date__gte=datetime.now().date() - timedelta(days=10)
+        ).order_by('-viewers')
+        cache.set(trend_10_cache_key, trend_10, timeout=3600)  
+    
     return render(request, 'posts/trend_10.html', context={'trend_10': trend_10})
 
 
 def all_trend_a_month(request):
-    end_date_month = datetime.now().date()
-    start_date_month = end_date_month - timedelta(days=30)
-    trend_month = News.objects.filter(post_date__gte=start_date_month, post_date__lte=end_date_month).order_by('-viewers')
+    trend_month_cache_key = "all_trend_month"
+    
+    trend_month = cache.get(trend_month_cache_key)
+    if not trend_month:
+        end_date_month = datetime.now().date()
+        start_date_month = end_date_month - timedelta(days=30)
+        trend_month = News.objects.filter(
+            post_date__gte=start_date_month, post_date__lte=end_date_month
+        ).order_by('-viewers')
+        cache.set(trend_month_cache_key, trend_month, timeout=3600) 
+
     return render(request, 'posts/trend_month.html', context={'trend_month': trend_month})
+
 
 
 class DetailNews(DetailView):
